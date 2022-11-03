@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@CrossOrigin(origins = "https://calm-thicket-13954.herokuapp.com/")
+@CrossOrigin()
 @Controller
 public class RestControl {
     @Autowired
