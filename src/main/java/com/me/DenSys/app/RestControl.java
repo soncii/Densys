@@ -5,11 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
+@CrossOrigin(origins = "https://calm-thicket-13954.herokuapp.com/")
 @Controller
 public class RestControl {
     @Autowired
@@ -19,8 +20,8 @@ public class RestControl {
     public ResponseEntity Index(@RequestBody Patient newPatient) {
         System.out.println("I'm trying to add");
         patientRepository.save(newPatient);
-        return ResponseEntity.ok(HttpStatus.OK);
-        //return "login";
+        ResponseEntity Damir = ResponseEntity.ok(HttpStatus.OK);
+        return Damir;
     }
     @GetMapping("/add/patient")
     public String Index1() {

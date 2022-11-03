@@ -27,7 +27,7 @@ public class Patient {
     @Column(name="Email")
     private String email;
     @Column(name="Address")
-    private String adress;
+    private String address;
     @Column(name="Married")
     private boolean married;
     @Column(name="RegistrationDate")
@@ -119,12 +119,12 @@ public class Patient {
         this.email = email;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getaddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setaddress(String address) {
+        this.address = address;
     }
 
     public boolean isMarried() {
