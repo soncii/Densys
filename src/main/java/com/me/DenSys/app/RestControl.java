@@ -16,8 +16,7 @@ public class RestControl {
     public ResponseEntity Index(@RequestBody Patient newPatient) {
         System.out.println("I'm trying to add");
         patientRepository.save(newPatient);
-        ResponseEntity Damir = ResponseEntity.ok(HttpStatus.OK);
-        return Damir;
+        return ResponseEntity.ok(HttpStatus.OK);
     }
     @GetMapping("/add/patient")
     public String Index1() {
