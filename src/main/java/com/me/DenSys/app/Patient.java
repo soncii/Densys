@@ -19,7 +19,7 @@ public class Patient {
     private String surname;
     @Column(name="MiddleName")
     private String middleName;
-    @Column(name="BloodGroup")
+    @Column(name="bloodGroup")
     private String  bloodGroup;
     @Column(name="EmergencyConctactNumber")
     private String emergencyContactNumber;
@@ -88,11 +88,11 @@ public class Patient {
         this.middleName = middleName;
     }
 
-    public String getbloodGroup() {
+    public String getBloodGroup() {
         return bloodGroup;
     }
 
-    public void setbloodGroup(String bloodGroup) {
+    public void setBloodGroup(String bloodGroup) {
         bloodGroup = bloodGroup;
     }
 

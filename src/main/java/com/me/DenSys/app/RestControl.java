@@ -55,7 +55,7 @@ public class RestControl {
         if (!byId.isPresent()) return ResponseEntity.status(404).build();
         Patient patient = byId.get();
         patient.setaddress(newPatient.getaddress());
-        patient.setbloodGroup(newPatient.getbloodGroup());
+        patient.setBloodGroup(newPatient.getBloodGroup());
         patient.setEmail(newPatient.getEmail());
         patient.setDoB(newPatient.getDoB());
         patient.setiIN(newPatient.getiIN());
