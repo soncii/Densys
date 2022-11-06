@@ -16,10 +16,18 @@ public class RestControl {
     EntityManager entityManager;
     @Autowired
     PatientRepository patientRepository;
+    @Autowired
+    DoctorRepository doctorRepository;
     @PostMapping(path="/add/patient",
     consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> addPatient(@RequestBody Patient newPatient) {
         patientRepository.save(newPatient);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+    @PostMapping(path="/add/doctor",
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> addDoctor(@RequestBody Doctor newDoctor) {
+        doctorRepository.save(newDoctor);
         return ResponseEntity.ok(HttpStatus.OK);
     }
     @GetMapping(path="/see/patients",
@@ -28,10 +36,23 @@ public class RestControl {
         List<Patient> allPatients = patientRepository.findAll();
         return ResponseEntity.ok(allPatients);
     }
+    @GetMapping(path="/see/doctors",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> requestAllDoctors() {
+        List<Doctor> allDoctors = doctorRepository.findAll();
+        return ResponseEntity.ok(allDoctors);
+    }
     @GetMapping(path="/see/patient/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> patientById(@PathVariable Long id) {
         Optional<Patient> byId = patientRepository.findById(id);
+        if (byId.isPresent()) return ResponseEntity.ok(byId);
+        return ResponseEntity.status(404).build();
+    }
+    @GetMapping(path="/see/doctor/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> doctorById(@PathVariable Long id) {
+        Optional<Doctor> byId = doctorRepository.findById(id);
         if (byId.isPresent()) return ResponseEntity.ok(byId);
         return ResponseEntity.status(404).build();
     }
