@@ -95,7 +95,7 @@ public class Patient {
     }
 
     public void setBloodGroup(String bloodGroup) {
-        bloodGroup = bloodGroup;
+        this.bloodGroup = bloodGroup;
     }
 
     public String getEmergencyContactNumber() {
