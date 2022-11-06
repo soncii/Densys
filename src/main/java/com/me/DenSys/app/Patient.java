@@ -1,8 +1,10 @@
 package com.me.DenSys.app;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.sql.Date;
-
+@Data
 @Entity(name="patient")
 @Table(name="patient")
 public class Patient {
