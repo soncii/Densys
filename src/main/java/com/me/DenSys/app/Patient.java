@@ -3,7 +3,7 @@ package com.me.DenSys.app;
 import javax.persistence.*;
 import java.sql.Date;
 
-@Entity
+@Entity(name="patient")
 @Table(name="patient")
 public class Patient {
     @GeneratedValue(strategy = GenerationType.AUTO)
