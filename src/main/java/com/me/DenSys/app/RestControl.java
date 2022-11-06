@@ -21,7 +21,7 @@ public class RestControl {
         Patient Damir = new Patient();
        // System.out.println(Damir.getId());
         patientRepository.save(newPatient);
-       // patientRepository.save(Damir);
+        patientRepository.save(Damir);
         return ResponseEntity.ok(HttpStatus.OK);
     }
     @GetMapping(path="/see/patients",
