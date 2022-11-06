@@ -6,6 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin()
 @RestController
 public class RestControl {
@@ -18,9 +20,13 @@ public class RestControl {
         patientRepository.save(newPatient);
         return ResponseEntity.ok(HttpStatus.OK);
     }
-    @GetMapping("/add/patient")
-    public String Index1() {
-        return "login";
+    @GetMapping(name="/see/patients",
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> Index1() {
+        //JSONObject res = new JSONObject();
+        List<Patient> allPatients = patientRepository.findAll();
+        return ResponseEntity.ok(allPatients);
+
     }
     @GetMapping("/login")
     public String Home(){
