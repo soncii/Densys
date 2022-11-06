@@ -6,12 +6,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin()
 @RestController
 public class RestControl {
+    EntityManager entityManager;
     @Autowired
     PatientRepository patientRepository;
     @PostMapping(path="/add/patient",
@@ -19,6 +21,9 @@ public class RestControl {
     public ResponseEntity<Object> addPatient(@RequestBody Patient newPatient) {
 //        System.out.println("I'm trying to add");
         Patient Damir = new Patient();
+        entityManager.persist(newPatient);
+        entityManager.persist(Damir);
+        //Damir.setId();
        // System.out.println(Damir.getId());
         patientRepository.save(newPatient);
         patientRepository.save(Damir);
