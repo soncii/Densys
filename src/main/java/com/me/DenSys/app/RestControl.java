@@ -1,6 +1,7 @@
 package com.me.DenSys.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,10 @@ public class RestControl {
     public ResponseEntity<Object> addPatient(@RequestBody Patient newPatient) {
 //        System.out.println("I'm trying to add");
         Patient Damir = new Patient();
-        System.out.println(Damir.getId());
+       // System.out.println(Damir.getId());
         patientRepository.save(newPatient);
-        patientRepository.save(Damir);
-        return ResponseEntity.ok(Damir.getId());
+       // patientRepository.save(Damir);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
     @GetMapping(path="/see/patients",
     produces = MediaType.APPLICATION_JSON_VALUE)
