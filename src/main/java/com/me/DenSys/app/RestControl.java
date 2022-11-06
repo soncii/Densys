@@ -22,11 +22,11 @@ public class RestControl {
 //        System.out.println("I'm trying to add");
         Patient Damir = new Patient();
         entityManager.persist(newPatient);
-        entityManager.persist(Damir);
+        //entityManager.persist(Damir);
         //Damir.setId();
        // System.out.println(Damir.getId());
         patientRepository.save(newPatient);
-        patientRepository.save(Damir);
+        //patientRepository.save(Damir);
         return ResponseEntity.ok(HttpStatus.OK);
     }
     @GetMapping(path="/see/patients",
