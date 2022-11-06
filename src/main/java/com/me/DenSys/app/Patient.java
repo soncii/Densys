@@ -76,6 +76,7 @@ public class Patient {
     }
 
     public void setSurname(String surname) {
+
         this.surname = surname;
     }
 
