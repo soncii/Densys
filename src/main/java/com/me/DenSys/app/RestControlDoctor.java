@@ -2,6 +2,7 @@ package com.me.DenSys.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @CrossOrigin()
 @ComponentScan("com.me.DenSys.app")
@@ -36,8 +38,9 @@ public class RestControlDoctor {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> requestAllPatients(@RequestParam Integer page, @RequestParam Integer perPage) {
         Pageable of = PageRequest.of(page, perPage);
-        List<Doctor> allPatients = (List<Doctor>) doctorRepository.findAll(of);
-        return ResponseEntity.ok(allPatients);
+        Page<Doctor> all = doctorRepository.findAll(of);
+        List<Doctor> collect = all.get().collect(Collectors.toList());
+        return ResponseEntity.ok(collect);
     }
 
     @GetMapping(path = "/see/doctor/{id}",
