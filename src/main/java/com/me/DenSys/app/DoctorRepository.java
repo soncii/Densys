@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Component
-@Repository(value = "D")
+@Repository(value = "Dam")
 public interface DoctorRepository extends JpaRepository<Doctor,Long> {
 }
