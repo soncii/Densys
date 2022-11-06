@@ -17,9 +17,9 @@ public class Patient {
     @Column(name="Surname")
     private String surname;
     @Column(name="MiddleName")
-    private String middlename;
+    private String middleName;
     @Column(name="BloodGroup")
-    private String  BloodGroup;
+    private String  bloodGroup;
     @Column(name="EmergencyConctactNumber")
     private String emergencyContactNumber;
     @Column(name="ContactNumber")
@@ -79,20 +79,20 @@ public class Patient {
         this.surname = surname;
     }
 
-    public String getMiddlename() {
-        return middlename;
+    public String getmiddleName() {
+        return middleName;
     }
 
-    public void setMiddlename(String middlename) {
-        this.middlename = middlename;
+    public void setmiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
-    public String getBloodGroup() {
-        return BloodGroup;
+    public String getbloodGroup() {
+        return bloodGroup;
     }
 
-    public void setBloodGroup(String bloodGroup) {
-        BloodGroup = bloodGroup;
+    public void setbloodGroup(String bloodGroup) {
+        bloodGroup = bloodGroup;
     }
 
     public String getEmergencyContactNumber() {
@@ -143,7 +143,7 @@ public class Patient {
         this.registrationDate = registrationDate;
     }
 }
-//enum BloodGroup {
+//enum bloodGroup {
 //    FIRSTPOS,
 //    SECONDPOS,
 //    THIRDPOS,
