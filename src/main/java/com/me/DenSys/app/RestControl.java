@@ -1,6 +1,7 @@
 package com.me.DenSys.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -12,11 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin()
+@ComponentScan("com.me.DenSys.app")
 @RestController
 public class RestControl {
-
     @Autowired(required = false)
-            //@Qualifier("patientRepository")
     PatientRepository patientRepository;
 
     @PostMapping(path="/add/patient",

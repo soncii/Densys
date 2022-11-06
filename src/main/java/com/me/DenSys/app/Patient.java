@@ -6,8 +6,8 @@ import java.sql.Date;
 @Entity(name="patient")
 @Table(name="patient")
 public class Patient {
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name="IIN")
     private Long iIN;
