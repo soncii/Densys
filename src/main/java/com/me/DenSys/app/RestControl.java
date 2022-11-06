@@ -2,6 +2,8 @@ package com.me.DenSys.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,18 +26,19 @@ public class RestControl {
         patientRepository.save(newPatient);
         return ResponseEntity.ok(HttpStatus.OK);
     }
-    @GetMapping(path="/see/patients",
+    @GetMapping(path="/see/patients/page={page}&perPage={perPage}",
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> requestAllPatients() {
-        List<Patient> allPatients = patientRepository.findAll();
+    public ResponseEntity<Object> requestAllPatients(@PathVariable Integer page, @PathVariable Integer perPage) {
+        Pageable of = PageRequest.of(page, perPage);
+        List<Patient> allPatients = (List<Patient>) patientRepository.findAll(of);
         return ResponseEntity.ok(allPatients);
     }
-//    @GetMapping(path="/see/doctors",
-//            produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Object> requestAllDoctors() {
-//        List<Doctor> allDoctors = doctorRepository.findAll();
-//        return ResponseEntity.ok(allDoctors);
-//    }
+    @GetMapping(path="/see/patients/all",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> requestAllPatients() {
+        List<Patient> allPatients =patientRepository.findAll();
+        return ResponseEntity.ok(allPatients);
+    }
     @GetMapping(path="/see/patient/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> patientById(@PathVariable Long id) {
@@ -43,13 +46,28 @@ public class RestControl {
         if (byId.isPresent()) return ResponseEntity.ok(byId);
         return ResponseEntity.status(404).build();
     }
-//    @GetMapping(path="/see/doctor/{id}",
-//            produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Object> doctorById(@PathVariable Long id) {
-//        Optional<Doctor> byId = doctorRepository.findById(id);
-//        if (byId.isPresent()) return ResponseEntity.ok(byId);
-//        return ResponseEntity.status(404).build();
-//    }
+    @PutMapping(path="/update/patient/{id}",
+    consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> updatePatient(@RequestBody Patient newPatient, @PathVariable Long id) {
+        Optional<Patient> byId = patientRepository.findById(id);
+        if (byId.isEmpty()) return ResponseEntity.status(404).build();
+        Patient patient = byId.get();
+        patient.setaddress(newPatient.getaddress());
+        patient.setbloodGroup(newPatient.getbloodGroup());
+        patient.setEmail(newPatient.getEmail());
+        patient.setDoB(newPatient.getDoB());
+        patient.setiIN(newPatient.getiIN());
+        patient.setContactNumber(newPatient.getContactNumber());
+        patient.setEmergencyContactNumber(newPatient.getEmergencyContactNumber());
+        patient.setFirstName(newPatient.getFirstName());
+        patient.setSurname(newPatient.getSurname());
+        patient.setmiddleName(newPatient.getmiddleName());
+        patient.setMarried(newPatient.isMarried());
+        patient.setRegistrationDate(newPatient.getRegistrationDate());
+        patientRepository.save(patient);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
     @GetMapping("/login")
     public String Home(){
         System.out.println("I'm login");

@@ -27,7 +27,7 @@ public class Doctor {
     private String specializationId;
     @Column(name="Experience")
     private Integer experience;
-    @Column(name="Category")
+    @Column(name="price")
     private Integer price;
     @Column(name="ScheduleDetails")
     private String scheduleDetails;
