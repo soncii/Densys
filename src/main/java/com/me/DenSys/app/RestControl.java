@@ -20,7 +20,7 @@ public class RestControl {
         patientRepository.save(newPatient);
         return ResponseEntity.ok(HttpStatus.OK);
     }
-    @GetMapping(name="/see/patients",
+    @GetMapping(path="/see/patients",
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> Index1() {
         //JSONObject res = new JSONObject();
