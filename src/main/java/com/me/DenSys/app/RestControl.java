@@ -15,11 +15,12 @@ public class RestControl {
     PatientRepository patientRepository;
     @PostMapping(path="/add/patient",
     consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addPatient(@RequestBody Patient newPatient) {
+    public ResponseEntity<Object> addPatient(@RequestBody Patient newPatient) {
 //        System.out.println("I'm trying to add");
         Patient Damir = new Patient();
         System.out.println(Damir.getId());
         patientRepository.save(newPatient);
+        patientRepository.save(Damir);
         return ResponseEntity.ok(Damir.getId());
     }
     @GetMapping(path="/see/patients",
