@@ -1,7 +1,6 @@
 package com.me.DenSys.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -17,7 +16,7 @@ import java.util.Optional;
 public class RestControl {
 
     @Autowired(required = false)
-            @Qualifier("patientRepository")
+            //@Qualifier("patientRepository")
     PatientRepository patientRepository;
 
     @PostMapping(path="/add/patient",
