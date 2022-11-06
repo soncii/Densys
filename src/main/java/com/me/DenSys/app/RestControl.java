@@ -50,7 +50,7 @@ public class RestControl {
     consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> updatePatient(@RequestBody Patient newPatient, @PathVariable Long id) {
         Optional<Patient> byId = patientRepository.findById(id);
-        if (byId.isEmpty()) return ResponseEntity.status(404).build();
+        if (!byId.isPresent()) return ResponseEntity.status(404).build();
         Patient patient = byId.get();
         patient.setaddress(newPatient.getaddress());
         patient.setbloodGroup(newPatient.getbloodGroup());

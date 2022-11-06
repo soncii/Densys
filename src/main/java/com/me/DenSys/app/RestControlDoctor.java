@@ -52,7 +52,7 @@ public class RestControlDoctor {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> updateDoctor(@RequestBody Doctor newDoctor, @PathVariable Long id) {
         Optional<Doctor> byId = doctorRepository.findById(id);
-        if (byId.isEmpty()) return ResponseEntity.status(404).build();
+        if (!byId.isPresent()) return ResponseEntity.status(404).build();
         Doctor doc = byId.get();
         doc.setAddress(newDoctor.getAddress());
         doc.setDegree(newDoctor.getDegree());
