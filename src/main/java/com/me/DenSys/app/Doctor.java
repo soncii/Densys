@@ -1,13 +1,13 @@
 package com.me.DenSys.app;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+@Table(name="doctor")
 public class Doctor {
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
     @Column(name="IIN")
     private Long iIN;
