@@ -7,6 +7,7 @@ import java.sql.Date;
 @Table
 public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
     @Column(name="IIN")
     private Long iIN;
