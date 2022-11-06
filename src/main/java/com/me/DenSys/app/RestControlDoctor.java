@@ -32,9 +32,9 @@ public class RestControlDoctor {
         List<Doctor> allDoctors = doctorRepository.findAll();
         return ResponseEntity.ok(allDoctors);
     }
-    @GetMapping(path="/see/doctors/page={page}&perPage={perPage}",
+    @GetMapping(path="/see/doctors/",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> requestAllPatients(@PathVariable Integer page, @PathVariable Integer perPage) {
+    public ResponseEntity<Object> requestAllPatients(@RequestParam Integer page, @RequestParam Integer perPage) {
         Pageable of = PageRequest.of(page, perPage);
         List<Doctor> allPatients = (List<Doctor>) doctorRepository.findAll(of);
         return ResponseEntity.ok(allPatients);

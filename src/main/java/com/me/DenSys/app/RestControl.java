@@ -26,9 +26,9 @@ public class RestControl {
         patientRepository.save(newPatient);
         return ResponseEntity.ok(HttpStatus.OK);
     }
-    @GetMapping(path="/see/patients/page={page}&perPage={perPage}",
+    @GetMapping(path="/see/patients/",
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> requestAllPatients(@PathVariable Integer page, @PathVariable Integer perPage) {
+    public ResponseEntity<Object> requestAllPatients(@RequestParam Integer page, @RequestParam Integer perPage) {
         Pageable of = PageRequest.of(page, perPage);
         List<Patient> allPatients = (List<Patient>) patientRepository.findAll(of);
         return ResponseEntity.ok(allPatients);
