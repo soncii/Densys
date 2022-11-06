@@ -2,6 +2,7 @@ package com.me.DenSys.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -29,8 +30,9 @@ public class RestControl {
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> requestAllPatients(@RequestParam Integer page, @RequestParam Integer perPage) {
         Pageable of = PageRequest.of(page, perPage);
-        List<Patient> allPatients = (List<Patient>) patientRepository.findAll(of);
-        return ResponseEntity.ok(allPatients);
+        Page<Patient> all = patientRepository.findAll(of);
+        List<Patient> collect = all.get().toList();
+        return ResponseEntity.ok(collect);
     }
     @GetMapping(path="/see/patients/all",
             produces = MediaType.APPLICATION_JSON_VALUE)
