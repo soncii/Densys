@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @CrossOrigin()
 @ComponentScan("com.me.DenSys.app")
@@ -31,7 +32,7 @@ public class RestControl {
     public ResponseEntity<Object> requestAllPatients(@RequestParam Integer page, @RequestParam Integer perPage) {
         Pageable of = PageRequest.of(page, perPage);
         Page<Patient> all = patientRepository.findAll(of);
-        List<Patient> collect = all.get().toList();
+        List<Patient> collect = all.get().collect(Collectors.toList());
         return ResponseEntity.ok(collect);
     }
     @GetMapping(path="/see/patients/all",
