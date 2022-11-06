@@ -30,7 +30,7 @@ public class Patient {
     @Column(name="Address")
     private String address;
     @Column(name="Married")
-    private boolean married;
+    private String married;
     @Column(name="RegistrationDate")
     private Date registrationDate;
 
@@ -128,11 +128,11 @@ public class Patient {
         this.address = address;
     }
 
-    public boolean isMarried() {
+    public String isMarried() {
         return married;
     }
 
-    public void setMarried(boolean married) {
+    public void setMarried(String married) {
         this.married = married;
     }
 
