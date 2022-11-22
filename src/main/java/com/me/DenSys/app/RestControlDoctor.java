@@ -1,6 +1,9 @@
 package com.me.DenSys.app;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.me.DenSys.app.entities.Doctor;
+import com.me.DenSys.app.entities.Specialization;
+import com.me.DenSys.app.repositories.DoctorRepository;
+import com.me.DenSys.app.repositories.SpecializationRepository;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,13 +21,23 @@ import java.util.stream.Collectors;
 @ComponentScan("com.me.DenSys.app")
 @RestController
 public class RestControlDoctor {
-    @Autowired(required = false)
+    final
     DoctorRepository doctorRepository;
+    final
+    SpecializationRepository specializationRepository;
+
+
+    public RestControlDoctor(DoctorRepository doctorRepository, SpecializationRepository specializationRepository) {
+        this.doctorRepository = doctorRepository;
+        this.specializationRepository = specializationRepository;
+    }
 
     @PostMapping(path = "/add/doctor",
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> addDoctor(@RequestBody Doctor newDoctor) {
         doctorRepository.save(newDoctor);
+        if (!specializationRepository.findById(newDoctor.getSpecializationId()).isPresent())
+            specializationRepository.save(new Specialization(newDoctor.getSpecializationId()));
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

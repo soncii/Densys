@@ -1,6 +1,7 @@
 package com.me.DenSys.app;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.me.DenSys.app.entities.Patient;
+import com.me.DenSys.app.repositories.PatientRepository;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,8 +19,12 @@ import java.util.stream.Collectors;
 @ComponentScan("com.me.DenSys.app")
 @RestController
 public class RestControl {
-    @Autowired(required = false)
+    final
     PatientRepository patientRepository;
+
+    public RestControl(PatientRepository patientRepository) {
+        this.patientRepository = patientRepository;
+    }
 
     @PostMapping(path="/add/patient",
     consumes = MediaType.APPLICATION_JSON_VALUE)

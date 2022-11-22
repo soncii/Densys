@@ -1,4 +1,4 @@
-package com.me.DenSys.app;
+package com.me.DenSys.app.entities;
 
 import lombok.Data;
 
