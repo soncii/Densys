@@ -65,7 +65,7 @@ public class AppointmentController {
     @PostMapping(value = "/save/schedule",
     consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> saveSchedule(@RequestBody ScheduleDetails[] scheduleDetails){
-
+            //accept as array
             scheduleRepository.saveAll(Arrays.asList(scheduleDetails));
             return ResponseEntity.ok().body(scheduleDetails);
 
