@@ -1,6 +1,7 @@
 package com.me.DenSys.app.entities;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.time.LocalTime;
 
 
@@ -16,9 +17,9 @@ public class ScheduleDetails {
     public Integer weekDay;
 
     @Column
-    public LocalTime start;
+    public Time start;
 
-    @Column LocalTime end;
+    @Column Time end;
 
     public ScheduleDetails() {
     }
@@ -47,11 +48,11 @@ public class ScheduleDetails {
         this.weekDay = weekDay;
     }
 
-    public LocalTime getStart() {
+    public Time getStart() {
         return start;
     }
 
-    public void setStart(LocalTime start) {
+    public void setStart(Time start) {
         this.start = start;
     }
 
