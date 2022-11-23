@@ -1,7 +1,7 @@
 package com.me.DenSys.app;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.me.DenSys.app.entities.Doctor;
+import com.me.DenSys.app.entities.ScheduleDetails;
 import com.me.DenSys.app.entities.Specialization;
 import com.me.DenSys.app.repositories.DoctorRepository;
 import com.me.DenSys.app.repositories.PatientRepository;
@@ -12,8 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -66,15 +64,11 @@ public class AppointmentController {
     }
     @PostMapping(value = "/save/schedule",
     consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> saveSchedule(@RequestBody File file){
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            Specialization[] specialization = mapper.readValue(file, Specialization[].class);
-            specializationRepository.saveAll(Arrays.asList(specialization));
-            return ResponseEntity.ok().body(specialization);
-        } catch (IOException e) {
-            return ResponseEntity.status(400).build();
-        }
+    public ResponseEntity<Object> saveSchedule(@RequestBody ScheduleDetails[] scheduleDetails){
+
+            scheduleRepository.saveAll(Arrays.asList(scheduleDetails));
+            return ResponseEntity.ok().body(scheduleDetails);
+
     }
     @GetMapping(value = "/see/schedules/all",
             produces = MediaType.APPLICATION_JSON_VALUE)
