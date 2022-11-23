@@ -12,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,9 +63,9 @@ public class AppointmentController {
     }
     @PostMapping(value = "/save/schedule",
     consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> saveSchedule(@RequestBody ScheduleDetails[] scheduleDetails){
+    public ResponseEntity<Object> saveSchedule(@RequestBody List<ScheduleDetails> scheduleDetails){
             //accept as array
-            scheduleRepository.saveAll(Arrays.asList(scheduleDetails));
+            scheduleRepository.saveAll(scheduleDetails);
             return ResponseEntity.ok().body(scheduleDetails);
 
     }
