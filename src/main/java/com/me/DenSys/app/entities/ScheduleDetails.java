@@ -2,7 +2,6 @@ package com.me.DenSys.app.entities;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.time.LocalTime;
 
 
 @Entity(name="schedule")
@@ -56,11 +55,11 @@ public class ScheduleDetails {
         this.start = start;
     }
 
-    public LocalTime getEnd() {
+    public Time getEnd() {
         return end;
     }
 
-    public void setEnd(LocalTime end) {
+    public void setEnd(Time end) {
         this.end = end;
     }
 }
