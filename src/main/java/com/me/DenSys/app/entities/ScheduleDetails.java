@@ -13,7 +13,7 @@ public class ScheduleDetails {
     public Long id;
 
     @Column
-    public Long DoctorId;
+    public String doctorEmail;
 
     @Column
     public LocalTime start;
