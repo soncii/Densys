@@ -9,7 +9,6 @@ import java.time.LocalTime;
 public class ScheduleDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     public Long id;
 
     @Column
