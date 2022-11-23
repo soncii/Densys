@@ -48,19 +48,19 @@ public class ScheduleDetails {
         this.weekDay = weekDay;
     }
 
-    public Time getStart() {
+    public Time getStartTime() {
         return startTime;
     }
 
-    public void setStart(Time start) {
-        this.startTime = start;
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
     }
 
-    public Time getEnd() {
+    public Time getEndTime() {
         return endTime;
     }
 
-    public void setEnd(Time end) {
-        this.endTime = end;
+    public void setEndTime(Time endTime) {
+        this.endTime = endTime;
     }
 }
