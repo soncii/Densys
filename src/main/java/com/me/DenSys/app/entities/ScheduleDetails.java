@@ -8,7 +8,7 @@ import java.sql.Time;
 @Table(name="schedule")
 public class ScheduleDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     @Column
     public String doctorEmail;
@@ -16,9 +16,10 @@ public class ScheduleDetails {
     public Integer weekDay;
 
     @Column
-    public Time start;
+    public Time startTime;
 
-    @Column Time end;
+    @Column
+    public Time endTime;
 
     public ScheduleDetails() {
     }
@@ -48,18 +49,18 @@ public class ScheduleDetails {
     }
 
     public Time getStart() {
-        return start;
+        return startTime;
     }
 
     public void setStart(Time start) {
-        this.start = start;
+        this.startTime = start;
     }
 
     public Time getEnd() {
-        return end;
+        return endTime;
     }
 
     public void setEnd(Time end) {
-        this.end = end;
+        this.endTime = end;
     }
 }
