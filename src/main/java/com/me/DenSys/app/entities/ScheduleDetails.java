@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.time.LocalTime;
 
 
-@Entity
-@Table
+@Entity(name="schedule")
+@Table(name="schedule")
 public class ScheduleDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
