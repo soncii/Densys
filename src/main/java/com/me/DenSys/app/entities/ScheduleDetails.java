@@ -10,7 +10,6 @@ public class ScheduleDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
-
     @Column
     public String doctorEmail;
     @Column

@@ -39,6 +39,8 @@ public class Doctor {
     private String address;
     @Column(name="Url")
     private String url;
+
+
     public Doctor() {
 
     }
