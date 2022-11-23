@@ -1,11 +1,11 @@
 package com.me.DenSys.app.entities;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalTime;
 
+
+@Entity
+@Table
 public class ScheduleDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
