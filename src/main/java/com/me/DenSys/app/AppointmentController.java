@@ -74,53 +74,20 @@ public class AppointmentController {
     public ResponseEntity<Object> seeSchedules(){
         return ResponseEntity.ok(scheduleRepository.findAll());
     }
-//    @GetMapping(path="/specializations",
-//            produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Object[]> requestSpecs() {
-//
-//        List<String> specs = specializationRepository.findAll()
-//                .stream()
-//                .map(Specialization::getSpecName)
-//                .collect(Collectors.toList());
-//        List<Doctor> doctors = doctorRepository.findAll();
-//        List<Object[]> docNames = doctors.stream()
-//                .map((x)->{ return new Object[]{x.getFirstName() + x.getSurname(), x.getId()}; }).collect(Collectors.toList());
-//        Object[] res = {specs,docNames};
-//        return ResponseEntity.ok(res);
-//    }
-//    @GetMapping(path="/see/patient/{id}",
-//            produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Object> patientById(@PathVariable Long id) {
-//        Optional<Patient> byId = patientRepository.findById(id);
-//        if (byId.isPresent()) return ResponseEntity.ok(byId);
-//        return ResponseEntity.status(404).build();
-//    }
-//    @PutMapping(path="/update/patient/{id}",
-//            consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Object> updatePatient(@RequestBody Patient newPatient, @PathVariable Long id) {
-//        Optional<Patient> byId = patientRepository.findById(id);
-//        if (!byId.isPresent()) return ResponseEntity.status(404).build();
-//        Patient patient = byId.get();
-//        patient.setaddress(newPatient.getaddress());
-//        patient.setBloodGroup(newPatient.getBloodGroup());
-//        patient.setEmail(newPatient.getEmail());
-//        patient.setDoB(newPatient.getDoB());
-//        patient.setiIN(newPatient.getiIN());
-//        patient.setContactNumber(newPatient.getContactNumber());
-//        patient.setEmergencyContactNumber(newPatient.getEmergencyContactNumber());
-//        patient.setFirstName(newPatient.getFirstName());
-//        patient.setSurname(newPatient.getSurname());
-//        patient.setmiddleName(newPatient.getmiddleName());
-//        patient.setMarried(newPatient.isMarried());
-//        patient.setRegistrationDate(newPatient.getRegistrationDate());
-//        patientRepository.save(patient);
-//        return ResponseEntity.ok(HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/login")
-//    public String Home(){
-//        System.out.println("I'm login");
-//        return "login";
-//    }
+
+    @GetMapping(value = "see/specialization/all",
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> seeSpecs(){
+        return ResponseEntity.ok(specializationRepository.findAll());
+    }
+
+    @GetMapping(value="/appointment/specialization/{spec}",
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> seeDoctorsSpec(@PathVariable("spec")
+                                                 String spec)
+                                                             {
+        return ResponseEntity.ok(doctorRepository.findAllBySpecializationId(spec));
+    }
+
 
 }
