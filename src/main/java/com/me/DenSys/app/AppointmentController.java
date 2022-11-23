@@ -65,14 +65,13 @@ public class AppointmentController {
         return ResponseEntity.ok(res);
     }
     @PostMapping(value = "/save/schedule",
-    consumes = MediaType.APPLICATION_JSON_VALUE,
-    produces = MediaType.APPLICATION_JSON_VALUE)
+    consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> saveSchedule(@RequestBody File file){
         ObjectMapper mapper = new ObjectMapper();
         try {
             Specialization[] specialization = mapper.readValue(file, Specialization[].class);
             specializationRepository.saveAll(Arrays.asList(specialization));
-            return ResponseEntity.ok(specialization);
+            return ResponseEntity.ok().body(specialization);
         } catch (IOException e) {
             return ResponseEntity.status(400).build();
         }
@@ -80,8 +79,7 @@ public class AppointmentController {
     @GetMapping(value = "/see/schedules/all",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> seeSchedules(){
-
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(scheduleRepository.findAll());
     }
 //    @GetMapping(path="/specializations",
 //            produces = MediaType.APPLICATION_JSON_VALUE)

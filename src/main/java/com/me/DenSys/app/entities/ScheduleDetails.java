@@ -14,6 +14,8 @@ public class ScheduleDetails {
 
     @Column
     public String doctorEmail;
+    @Column
+    public Integer weekDay;
 
     @Column
     public LocalTime start;
