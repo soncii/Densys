@@ -43,6 +43,7 @@ public class AppointmentController {
 //        return ResponseEntity.ok(collect);
  //   }
     @GetMapping(path="/appointment",
+
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object[]> requestAllPatients() {
 
@@ -52,10 +53,25 @@ public class AppointmentController {
                 .collect(Collectors.toList());
         List<Doctor> doctors = doctorRepository.findAll();
         List<Object[]> docNames = doctors.stream()
-                .map((x)->{ return new Object[]{x.getFirstName() + x.getSurname(), x.getId()}; }).collect(Collectors.toList());
+                .map((x)->{ return new Object[]{x.getFirstName() +' '+ x.getSurname(), x.getId()}; }).collect(Collectors.toList());
         Object[] res = {specs,docNames};
         return ResponseEntity.ok(res);
     }
+
+//    @GetMapping(path="/specializations",
+//            produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<Object[]> requestSpecs() {
+//
+//        List<String> specs = specializationRepository.findAll()
+//                .stream()
+//                .map(Specialization::getSpecName)
+//                .collect(Collectors.toList());
+//        List<Doctor> doctors = doctorRepository.findAll();
+//        List<Object[]> docNames = doctors.stream()
+//                .map((x)->{ return new Object[]{x.getFirstName() + x.getSurname(), x.getId()}; }).collect(Collectors.toList());
+//        Object[] res = {specs,docNames};
+//        return ResponseEntity.ok(res);
+//    }
 //    @GetMapping(path="/see/patient/{id}",
 //            produces = MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseEntity<Object> patientById(@PathVariable Long id) {
