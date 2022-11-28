@@ -80,7 +80,7 @@ public class AppointmentController {
     public ResponseEntity<Object> saveApp(@RequestBody Appointment appointment){
         //accept as array
         appointmentRepository.save(appointment);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(appointment);
 
     }
     @GetMapping(value = "/see/schedules/all",

@@ -6,7 +6,7 @@ import java.sql.Time;
 
 @Entity
 @Table(name="appointment")
-public class Appointment {
+public class Appointment     {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
