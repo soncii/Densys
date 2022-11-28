@@ -11,7 +11,7 @@ public class ScheduleDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     @Column
-    public String doctorEmail;
+    public String doctorIIN;
     @Column
     public Integer weekDay;
 
@@ -33,11 +33,11 @@ public class ScheduleDetails {
     }
 
     public String getDoctorEmail() {
-        return doctorEmail;
+        return doctorIIN;
     }
 
     public void setDoctorEmail(String doctorEmail) {
-        this.doctorEmail = doctorEmail;
+        this.doctorIIN = doctorEmail;
     }
 
     public Integer getWeekDay() {

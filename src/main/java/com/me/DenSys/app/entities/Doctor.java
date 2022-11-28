@@ -10,7 +10,7 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name="IIN")
-    private Long iIN;
+    private String iIN;
     @Column(name="DateOfBirth")
     private Date DoB;
     @Column(name="FirstName")
@@ -53,11 +53,11 @@ public class Doctor {
         this.id = id;
     }
 
-    public Long getiIN() {
+    public String getiIN() {
         return iIN;
     }
 
-    public void setiIN(Long iIN) {
+    public void setiIN(String iIN) {
         this.iIN = iIN;
     }
 

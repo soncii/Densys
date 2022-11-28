@@ -72,14 +72,24 @@ public class AppointmentController {
     @GetMapping(value = "/see/schedules/all",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> seeSchedules(){
+
         return ResponseEntity.ok(scheduleRepository.findAll());
     }
 
+    @GetMapping(value = "see/schedule/{IIN}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> docSchedule(
+            @RequestParam("IIN") String iin
+    ){
+        return ResponseEntity.ok(scheduleRepository.findAllByDoctorIIN(iin));
+    }
     @GetMapping(value = "see/specialization/all",
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> seeSpecs(){
         return ResponseEntity.ok(specializationRepository.findAll());
     }
+
+
 
     @GetMapping(value="/appointment/specialization/{spec}",
     produces = MediaType.APPLICATION_JSON_VALUE)
