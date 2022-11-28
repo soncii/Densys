@@ -1,18 +1,22 @@
 package com.me.DenSys.app;
 
+import com.me.DenSys.app.entities.Appointment;
 import com.me.DenSys.app.entities.Doctor;
 import com.me.DenSys.app.entities.ScheduleDetails;
 import com.me.DenSys.app.entities.Specialization;
-import com.me.DenSys.app.repositories.DoctorRepository;
-import com.me.DenSys.app.repositories.PatientRepository;
-import com.me.DenSys.app.repositories.ScheduleRepository;
-import com.me.DenSys.app.repositories.SpecializationRepository;
+import com.me.DenSys.app.repositories.*;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @CrossOrigin()
@@ -24,12 +28,14 @@ public class AppointmentController {
 
     final DoctorRepository doctorRepository;
     final ScheduleRepository scheduleRepository;
+    final AppointmentRepository appointmentRepository;
 
-    public AppointmentController(PatientRepository patientRepository, SpecializationRepository specializationRepository, DoctorRepository doctorRepository, ScheduleRepository scheduleRepository) {
+    public AppointmentController(PatientRepository patientRepository, SpecializationRepository specializationRepository, DoctorRepository doctorRepository, ScheduleRepository scheduleRepository, AppointmentRepository appointmentRepository) {
 
         this.specializationRepository = specializationRepository;
         this.doctorRepository = doctorRepository;
         this.scheduleRepository = scheduleRepository;
+        this.appointmentRepository = appointmentRepository;
     }
 
 //    @PostMapping(path="/add/patient",
@@ -81,7 +87,30 @@ public class AppointmentController {
     public ResponseEntity<Object> docSchedule(
             @RequestParam("IIN") String iin
     ){
-        return ResponseEntity.ok(scheduleRepository.findAllByDoctorIIN(iin));
+        LocalDate now = LocalDate.now();
+
+        List<ScheduleDetails> scheduleDetails = scheduleRepository.findAllByDoctorIIN(iin);
+        List<Appointment> appointments = appointmentRepository.findAllByDoctorIIN(iin);
+        List<ScheduleDetails> res = new ArrayList<>();
+        for (int i=1; i<=7; i++) {
+            Integer day =  (now.getDayOfWeek().getValue()+i)%8;
+            List<ScheduleDetails> curSch = scheduleDetails.stream().filter(x -> Objects.equals(x.weekDay, day)).collect(Collectors.toList());
+            if (curSch.isEmpty()) continue;
+            int finalI = i;
+            List<Appointment> curApp = appointments.stream().filter(x -> Objects.equals(x.date, Date.valueOf(now.plusDays(finalI)))).collect(Collectors.toList());
+            if (curApp.isEmpty()) {
+                res.addAll(curSch);
+                continue;
+            }
+            for (ScheduleDetails s:curSch                 ) {
+                final Time finalStart = s.getStartTime();
+                Optional<Appointment> first = curApp.stream().filter(x -> x.startTime == finalStart).findFirst();
+                if (first.isPresent()) continue;
+                res.add(s);
+
+            }
+        }
+        return ResponseEntity.ok(res);
     }
     @GetMapping(value = "see/specialization/all",
     produces = MediaType.APPLICATION_JSON_VALUE)
