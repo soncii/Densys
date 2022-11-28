@@ -75,6 +75,14 @@ public class AppointmentController {
             return ResponseEntity.ok().body(scheduleDetails);
 
     }
+    @PostMapping(value = "/save/appointment",
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> saveApp(@RequestBody Appointment appointment){
+        //accept as array
+        appointmentRepository.save(appointment);
+        return ResponseEntity.ok().build();
+
+    }
     @GetMapping(value = "/see/schedules/all",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> seeSchedules(){
