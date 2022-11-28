@@ -112,7 +112,7 @@ public class AppointmentController {
             }
             for (ScheduleDetails s:curSch                 ) {
                 final Time finalStart = s.getStartTime();
-                Optional<Appointment> first = curApp.stream().filter(x -> x.startTime == finalStart).findFirst();
+                Optional<Appointment> first = curApp.stream().filter(x -> x.startTime.equals(finalStart)).findFirst();
                 if (first.isPresent()) continue;
                 res.add(s);
 
