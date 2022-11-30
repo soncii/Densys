@@ -31,7 +31,7 @@ public class RestControl {
         this.doctorRepository = doctorRepository;
     }
 
-    @GetMapping(path="/get/loginn",
+    @GetMapping(path="/get/login",
     consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> loginD(@RequestBody LoginDetails details){

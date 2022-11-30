@@ -1,20 +1,20 @@
 package com.me.DenSys.app.DTO;
 
 public class LoginDetails {
-    private String iinOremail;
+    private String login;
     private String password;
 
     public LoginDetails(String iinOremail, String password) {
-        this.iinOremail = iinOremail;
+        this.login = iinOremail;
         this.password = password;
     }
 
     public String getIinOremail() {
-        return iinOremail;
+        return login;
     }
 
     public void setIinOremail(String iinOremail) {
-        this.iinOremail = iinOremail;
+        this.login = iinOremail;
     }
 
     public String getPassword() {
