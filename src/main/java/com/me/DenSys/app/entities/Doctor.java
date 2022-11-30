@@ -11,8 +11,8 @@ public class Doctor {
     private Long id;
     @Column(name="IIN")
     private String iIN;
-//    @Column
-//    private String password;
+    @Column
+    private String password;
     @Column(name="DateOfBirth")
     private Date DoB;
     @Column(name="FirstName")

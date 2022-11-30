@@ -11,5 +11,5 @@ import java.util.List;
 @Repository(value = "Dam")
 public interface DoctorRepository extends JpaRepository<Doctor,Long> {
     List<Doctor> findAllBySpecializationId(String spec);
-//    Optional<Doctor> findByIIN(String iin, String password);
+//    Optional<Doctor> find(String iin, String password);
 }
