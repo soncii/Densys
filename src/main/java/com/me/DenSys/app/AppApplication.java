@@ -3,9 +3,8 @@ package com.me.DenSys.app;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication//(exclude = {DataSourceAutoConfiguration.class })
 @EntityScan(basePackages = {"com.me.DenSys.app.entities"})  // scan JPA entities
 public class AppApplication {
 	//comment by me nnd  bb
