@@ -100,8 +100,8 @@ public class AppointmentController {
         List<Appointment> appointments = appointmentRepository.findAllByDoctorIIN(iin);
         List<ScheduleDetails> res = new ArrayList<>();
         for (int i=1; i<=7; i++) {
-            Integer d = (now.getDayOfWeek().getValue()+i)%8;
-            if (d==0) d++;
+            Integer d = (now.getDayOfWeek().getValue()+i)%7;
+            if (d==0) d=7;
             final int day = d;
             List<ScheduleDetails> curSch = scheduleDetails.stream().filter(x -> Objects.equals(x.weekDay, day)).collect(Collectors.toList());
             if (curSch.isEmpty()) continue;
