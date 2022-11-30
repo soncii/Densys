@@ -29,7 +29,6 @@ public class Patient {
     private String contactNumber;
     @Column(name="Email")
     private String email;
-
     @Column
     private String password;
     @Column(name="Address")

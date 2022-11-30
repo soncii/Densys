@@ -1,20 +1,20 @@
 package com.me.DenSys.app.DTO;
 
 public class LoginPassword {
-    private String login;
+    private String loginn;
     private String password;
 
     public LoginPassword(String login, String password) {
-        this.login = login;
+        this.loginn = login;
         this.password=password;
     }
 
     public String getLogin() {
-        return login;
+        return loginn;
     }
 
     public void setLogin(String login) {
-        this.login = login;
+        this.loginn = login;
     }
 
     public String getPassword() {
