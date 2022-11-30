@@ -40,7 +40,7 @@ public class RestControl {
         } else if (doctorRepository.findNative(details.getIinOremail(),details.getPassword()).isPresent()) {
             return ResponseEntity.ok(doctorRepository.findNative(details.getIinOremail(),details.getPassword()).get());
         } else
-            return ResponseEntity.status(404).build();
+            return ResponseEntity.status(404).body(details);
     }
 
     @PostMapping(path="/add/patient",
