@@ -1,5 +1,6 @@
 package com.me.DenSys.app;
 
+import com.me.DenSys.app.DTO.LoginDetails;
 import com.me.DenSys.app.entities.Patient;
 import com.me.DenSys.app.repositories.DoctorRepository;
 import com.me.DenSys.app.repositories.PatientRepository;
@@ -30,17 +31,17 @@ public class RestControl {
         this.doctorRepository = doctorRepository;
     }
 
-//    @GetMapping(path="/get/loginn",
-//    consumes = MediaType.APPLICATION_JSON_VALUE,
-//    produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Object> loginD(@RequestBody LoginPassword details){
-//        if (patientRepository.findByEmailAndPassword(details.getLogin(),details.getPassword()).isPresent()){
-//            return ResponseEntity.ok(patientRepository.findByEmailAndPassword(details.getLogin(),details.getPassword()).get());
-//        } else if (doctorRepository.findByIINAndPassword(details.getLogin(),details.getPassword()).isPresent()) {
-//            return ResponseEntity.ok(doctorRepository.findByIINAndPassword(details.getLogin(),details.getPassword()).get());
-//        } else
-//            return ResponseEntity.status(404).build();
-//    }
+    @GetMapping(path="/get/loginn",
+    consumes = MediaType.APPLICATION_JSON_VALUE,
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> loginD(@RequestBody LoginDetails details){
+        if (patientRepository.nativeFind(details.getIinOremail(),details.getPassword()).isPresent()){
+            return ResponseEntity.ok(patientRepository.nativeFind(details.getIinOremail(),details.getPassword()).get());
+        } else if (doctorRepository.findNative(details.getIinOremail(),details.getPassword()).isPresent()) {
+            return ResponseEntity.ok(doctorRepository.findNative(details.getIinOremail(),details.getPassword()).get());
+        } else
+            return ResponseEntity.status(404).build();
+    }
 
     @PostMapping(path="/add/patient",
     consumes = MediaType.APPLICATION_JSON_VALUE)
