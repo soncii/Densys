@@ -11,8 +11,6 @@ public class Doctor {
     private Long id;
     @Column(name="IIN")
     private String iIN;
-//    @Column
-//    private String password;
     @Column(name="DateOfBirth")
     private Date DoB;
     @Column(name="FirstName")
@@ -46,14 +44,6 @@ public class Doctor {
     public Doctor() {
 
     }
-
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
 
     public Long getId() {
         return id;

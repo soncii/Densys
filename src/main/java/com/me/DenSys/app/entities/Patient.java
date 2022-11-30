@@ -29,8 +29,6 @@ public class Patient {
     private String contactNumber;
     @Column(name="Email")
     private String email;
-//    @Column
-//    private String password;
     @Column(name="Address")
     private String address;
     @Column(name="Married")
@@ -41,34 +39,6 @@ public class Patient {
 
     public Patient() {
 
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getMarried() {
-        return married;
     }
 
     public void setId(Long id) {
