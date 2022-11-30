@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -34,6 +35,7 @@ public class RestControlDoctor {
 
     @PostMapping(path = "/add/doctor",
             consumes = MediaType.APPLICATION_JSON_VALUE)
+    @Transactional
     public ResponseEntity<Object> addDoctor(@RequestBody Doctor newDoctor) {
         doctorRepository.save(newDoctor);
         if (!specializationRepository.findById(newDoctor.getSpecializationId()).isPresent())
