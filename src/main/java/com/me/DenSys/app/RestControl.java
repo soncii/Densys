@@ -35,10 +35,10 @@ public class RestControl {
     consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> loginD(@RequestBody LoginDetails details){
-        if (patientRepository.nativeFind(details.getIinOremail(),details.getPassword()).isPresent()){
-            return ResponseEntity.ok(patientRepository.nativeFind(details.getIinOremail(),details.getPassword()).get());
-        } else if (doctorRepository.findNative(details.getIinOremail(),details.getPassword()).isPresent()) {
-            return ResponseEntity.ok(doctorRepository.findNative(details.getIinOremail(),details.getPassword()).get());
+        if (patientRepository.nativeFind(details.getLogin(),details.getPassword()).isPresent()){
+            return ResponseEntity.ok(patientRepository.nativeFind(details.getLogin(),details.getPassword()).get());
+        } else if (doctorRepository.findNative(details.getLogin(),details.getPassword()).isPresent()) {
+            return ResponseEntity.ok(doctorRepository.findNative(details.getLogin(),details.getPassword()).get());
         } else
             return ResponseEntity.status(404).body(details);
     }

@@ -4,16 +4,16 @@ public class LoginDetails {
     private String login;
     private String password;
 
-    public LoginDetails(String iinOremail, String password) {
-        this.login = iinOremail;
+    public LoginDetails(String login, String password) {
+        this.login = login;
         this.password = password;
     }
 
-    public String getIinOremail() {
+    public String getLogin() {
         return login;
     }
 
-    public void setIinOremail(String iinOremail) {
+    public void setLogin(String iinOremail) {
         this.login = iinOremail;
     }
 
