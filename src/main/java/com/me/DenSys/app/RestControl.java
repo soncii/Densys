@@ -43,12 +43,7 @@ public class RestControl {
             return ResponseEntity.status(404).body(details);
     }
 
-    @PostMapping(path="/add/patient",
-    consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> addPatient(@RequestBody Patient newPatient) {
-        patientRepository.save(newPatient);
-        return ResponseEntity.ok(HttpStatus.OK);
-    }
+
     @GetMapping(path="/see/patients",
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> requestAllPatients(@RequestParam Integer page, @RequestParam Integer perPage) {

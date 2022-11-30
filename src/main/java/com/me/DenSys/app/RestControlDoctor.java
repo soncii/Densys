@@ -1,8 +1,10 @@
 package com.me.DenSys.app;
 
 import com.me.DenSys.app.entities.Doctor;
+import com.me.DenSys.app.entities.Patient;
 import com.me.DenSys.app.entities.Specialization;
 import com.me.DenSys.app.repositories.DoctorRepository;
+import com.me.DenSys.app.repositories.PatientRepository;
 import com.me.DenSys.app.repositories.SpecializationRepository;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
@@ -26,11 +28,13 @@ public class RestControlDoctor {
     DoctorRepository doctorRepository;
     final
     SpecializationRepository specializationRepository;
+    final PatientRepository patientRepository;
 
 
-    public RestControlDoctor(DoctorRepository doctorRepository, SpecializationRepository specializationRepository) {
+    public RestControlDoctor(DoctorRepository doctorRepository, SpecializationRepository specializationRepository, PatientRepository patientRepository) {
         this.doctorRepository = doctorRepository;
         this.specializationRepository = specializationRepository;
+        this.patientRepository = patientRepository;
     }
 
     @PostMapping(path = "/add/doctor",
@@ -42,7 +46,13 @@ public class RestControlDoctor {
             specializationRepository.save(new Specialization(newDoctor.getSpecializationId()));
         return ResponseEntity.ok(HttpStatus.OK);
     }
-
+    @PostMapping(path="/add/patient",
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @Transactional
+    public ResponseEntity<Object> addPatient(@RequestBody Patient newPatient) {
+        patientRepository.save(newPatient);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
     @GetMapping(path = "/see/doctors/all",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> requestAllDoctors() {
