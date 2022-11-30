@@ -3,7 +3,6 @@ package com.me.DenSys.app;
 import com.me.DenSys.app.entities.Patient;
 import com.me.DenSys.app.repositories.DoctorRepository;
 import com.me.DenSys.app.repositories.PatientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,11 +22,12 @@ import java.util.stream.Collectors;
 public class RestControl {
     final
     PatientRepository patientRepository;
-    @Autowired
+    final
     DoctorRepository doctorRepository;
 
-    public RestControl(PatientRepository patientRepository) {
+    public RestControl(PatientRepository patientRepository, DoctorRepository doctorRepository) {
         this.patientRepository = patientRepository;
+        this.doctorRepository = doctorRepository;
     }
 
 //    @GetMapping(path="/get/loginn",
