@@ -11,6 +11,6 @@ import java.util.Optional;
 @Component
 @Repository
 public interface PatientRepository extends JpaRepository<Patient,Long> {
-    @Query(nativeQuery = true, value = "Select * from patient p where p.email=:iin and p.password=:password")
+    @Query(nativeQuery = true, value = "Select * from patient p where p.email=:email and p.password=:password")
     Optional<Patient> nativeFind(String email, String password);
 }
