@@ -69,10 +69,9 @@ public class FileController {
         try {
             FileDB fileDB = storageService.getFile(id);
             if (fileDB==null) logger.error("QUERY RESULTED IN ERROR");
-            headers.add("Content-Disposition", "inline; filename=" + fileDB.getName());
+            headers.add("Content-Disposition", "inline; filename=\"" + fileDB.getName()+"\"");
             logger.info(fileDB.getName());
-            return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")
+            return ResponseEntity.ok().headers(headers)
                     .body(fileDB.getData());
         } catch (Exception e) {
             logger.error(e.getMessage());
