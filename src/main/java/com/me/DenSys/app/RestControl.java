@@ -1,6 +1,5 @@
 package com.me.DenSys.app;
 
-import com.me.DenSys.app.DTO.LoginDetails;
 import com.me.DenSys.app.entities.Patient;
 import com.me.DenSys.app.repositories.DoctorRepository;
 import com.me.DenSys.app.repositories.PatientRepository;
@@ -37,17 +36,17 @@ public class RestControl {
     @GetMapping(path="/get/login",
     consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> loginD(@RequestBody LoginDetails details){
+    public ResponseEntity<Object> loginD(@RequestParam("login") String login, @RequestParam("password") String password){
         try {
-            if (patientRepository.nativeFind(details.getLogin(), details.getPassword()).isPresent()) {
-                return ResponseEntity.ok(patientRepository.nativeFind(details.getLogin(), details.getPassword()).get());
-            } else if (doctorRepository.findNative(details.getLogin(), details.getPassword()).isPresent()) {
-                return ResponseEntity.ok(doctorRepository.findNative(details.getLogin(), details.getPassword()).get());
+            if (patientRepository.nativeFind(login,password).isPresent()) {
+                return ResponseEntity.ok(patientRepository.nativeFind(login, password).get());
+            } else if (doctorRepository.findNative(login, password).isPresent()) {
+                return ResponseEntity.ok(doctorRepository.findNative(login, password).get());
             }
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-        return ResponseEntity.status(404).body(details);
+        return ResponseEntity.status(404).body("login: "+login+"\npassword: "+password);
     }
 
 
