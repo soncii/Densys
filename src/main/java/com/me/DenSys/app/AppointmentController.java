@@ -5,6 +5,8 @@ import com.me.DenSys.app.entities.Doctor;
 import com.me.DenSys.app.entities.ScheduleDetails;
 import com.me.DenSys.app.entities.Specialization;
 import com.me.DenSys.app.repositories.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,7 @@ public class AppointmentController {
     final DoctorRepository doctorRepository;
     final ScheduleRepository scheduleRepository;
     final AppointmentRepository appointmentRepository;
+    Logger logger = LoggerFactory.getLogger(AppointmentController.class);
 
     public AppointmentController(PatientRepository patientRepository, SpecializationRepository specializationRepository, DoctorRepository doctorRepository, ScheduleRepository scheduleRepository, AppointmentRepository appointmentRepository) {
 

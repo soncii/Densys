@@ -1,5 +1,7 @@
 package com.me.DenSys.app.DoctorPicture;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,7 +21,7 @@ public class FileController {
 
     @Autowired
     private FileStorageService storageService;
-
+    Logger logger = LoggerFactory.getLogger(FileController.class);
     @PostMapping("/upload")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
@@ -55,9 +57,14 @@ public class FileController {
 
     @GetMapping("/files/{id}")
     public ResponseEntity<byte[]> getFile(@PathVariable String id) {
-        FileDB fileDB = storageService.getFile(id);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")
-                .body(fileDB.getData());
+        try {
+            FileDB fileDB = storageService.getFile(id);
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")
+                    .body(fileDB.getData());
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        return ResponseEntity.ok().build();
     }
 }

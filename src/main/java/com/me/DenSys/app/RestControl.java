@@ -31,7 +31,7 @@ public class RestControl {
         this.patientRepository = patientRepository;
         this.doctorRepository = doctorRepository;
     }
-    Logger logger = LoggerFactory.getLogger(RestControlDoctor.class);
+    Logger logger = LoggerFactory.getLogger(RestControl.class);
 
     @GetMapping(path="/get/login",
     produces = MediaType.APPLICATION_JSON_VALUE)
