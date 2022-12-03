@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class FileDB {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private String id;
 
     private String name;
