@@ -58,6 +58,8 @@ public class FileController {
 
     @GetMapping("/files/{id}")
     public ResponseEntity<byte[]> getFile(@PathVariable String id) {
+        logger.info(String.valueOf(id.getClass()));
+        logger.info(id);
         try {
             FileDB fileDB = storageService.getFile(id);
             return ResponseEntity.ok()
