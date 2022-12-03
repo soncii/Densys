@@ -87,7 +87,7 @@ public class RestControl {
         patient.setEmergencyContactNumber(newPatient.getEmergencyContactNumber());
         patient.setFirstName(newPatient.getFirstName());
         patient.setSurname(newPatient.getSurname());
-        patient.setmiddleName(newPatient.getmiddleName());
+        patient.setMiddleName(newPatient.getMiddleName());
         patient.setMarried(newPatient.isMarried());
         patient.setRegistrationDate(newPatient.getRegistrationDate());
         patientRepository.save(patient);
