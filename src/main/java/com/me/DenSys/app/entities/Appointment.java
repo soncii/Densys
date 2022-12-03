@@ -1,5 +1,7 @@
 package com.me.DenSys.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
@@ -15,6 +17,7 @@ public class Appointment     {
     public Long patientId;
 
     @Column
+    @JsonFormat(pattern="yyyy-MM-dd")
     public Date date;
 
     @Column
@@ -32,41 +35,6 @@ public class Appointment     {
     @Column
     public Time endTime;
 
-    public String getDoctorIIN() {
-        return doctorIIN;
-    }
-
-    public void setDoctorIIN(String doctorIIN) {
-        this.doctorIIN = doctorIIN;
-    }
-
-    public Time getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
-    }
-
-    public Time getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Appointment() {
-    }
-
     public Long getId() {
         return id;
     }
@@ -83,12 +51,12 @@ public class Appointment     {
         this.patientId = patientId;
     }
 
-    public Date getDates() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDates(Date dates) {
-        this.date = dates;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getSpecialization() {
@@ -99,12 +67,12 @@ public class Appointment     {
         this.specialization = specialization;
     }
 
-    public String getDoctorId() {
+    public String getDoctorIIN() {
         return doctorIIN;
     }
 
-    public void setDoctorId(String doctorId) {
-        this.doctorIIN = doctorId;
+    public void setDoctorIIN(String doctorIIN) {
+        this.doctorIIN = doctorIIN;
     }
 
     public String getContactDetails() {
@@ -113,5 +81,21 @@ public class Appointment     {
 
     public void setContactDetails(String contactDetails) {
         this.contactDetails = contactDetails;
+    }
+
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
+    }
+
+    public Time getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Time endTime) {
+        this.endTime = endTime;
     }
 }
