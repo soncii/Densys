@@ -78,7 +78,7 @@ public class RestControl {
         Optional<Patient> byId = patientRepository.findById(id);
         if (!byId.isPresent()) return ResponseEntity.status(404).build();
         Patient patient = byId.get();
-        patient.setaddress(newPatient.getaddress());
+        patient.setAddress(newPatient.getAddress());
         patient.setBloodGroup(newPatient.getBloodGroup());
         patient.setEmail(newPatient.getEmail());
         patient.setDoB(newPatient.getDoB());
@@ -88,7 +88,7 @@ public class RestControl {
         patient.setFirstName(newPatient.getFirstName());
         patient.setSurname(newPatient.getSurname());
         patient.setMiddleName(newPatient.getMiddleName());
-        patient.setMarried(newPatient.isMarried());
+        patient.setMarried(newPatient.getMarried());
         patient.setRegistrationDate(newPatient.getRegistrationDate());
         patientRepository.save(patient);
         return ResponseEntity.ok(HttpStatus.OK);

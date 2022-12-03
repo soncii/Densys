@@ -8,52 +8,35 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name="IIN")
+    @Column(name = "IIN")
     private String iIN;
-    @Column(name="DateOfBirth")
+    @Column(name = "DateOfBirth")
     private Date DoB;
-    @Column(name="FirstName")
+    @Column(name = "FirstName")
     private String firstName;
-    @Column(name="Surname")
+    @Column(name = "Surname")
     private String surname;
-    @Column(name="MiddleName")
+    @Column(name = "MiddleName")
     private String middleName;
-    @Column(name="bloodGroup")
-    private String  bloodGroup;
-    @Column(name="EmergencyConctactNumber")
+    @Column(name = "bloodGroup")
+    private String bloodGroup;
+    @Column(name = "EmergencyConctactNumber")
     private String emergencyContactNumber;
-    @Column(name="ContactNumber")
+    @Column(name = "ContactNumber")
     private String contactNumber;
-    @Column(name="Email")
+    @Column(name = "Email")
     private String email;
     @Column
     private String password;
-    @Column(name="Address")
+    @Column(name = "Address")
     private String address;
-    @Column(name="Married")
+    @Column(name = "Married")
     private String married;
-    @Column(name="RegistrationDate")
+    @Column(name = "RegistrationDate")
     private Date registrationDate;
-
 
     public Patient() {
 
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override
@@ -76,24 +59,12 @@ public class Patient {
                 '}';
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getMarried() {
-        return married;
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getiIN() {
@@ -125,8 +96,15 @@ public class Patient {
     }
 
     public void setSurname(String surname) {
-
         this.surname = surname;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
     public String getBloodGroup() {
@@ -161,15 +139,23 @@ public class Patient {
         this.email = email;
     }
 
-    public String getaddress() {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAddress() {
         return address;
     }
 
-    public void setaddress(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public String isMarried() {
+    public String getMarried() {
         return married;
     }
 
@@ -185,13 +171,3 @@ public class Patient {
         this.registrationDate = registrationDate;
     }
 }
-//enum bloodGroup {
-//    FIRSTPOS,
-//    SECONDPOS,
-//    THIRDPOS,
-//    FOURTHPOS,
-//    FIRSTNEG,
-//    SECONDNEG,
-//    THIRDNEG,
-//    FOURTHNEG
-//}
