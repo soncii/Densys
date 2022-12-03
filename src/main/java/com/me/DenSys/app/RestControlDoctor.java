@@ -81,7 +81,10 @@ public class RestControlDoctor {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> doctorById(@PathVariable Long id) {
         Optional<Doctor> byId = doctorRepository.findById(id);
-        if (byId.isPresent()) return ResponseEntity.ok(byId);
+        if (byId.isPresent()) {
+            logger.info(String.valueOf(byId.get()));
+            return ResponseEntity.ok(byId.get());
+        }
         return ResponseEntity.status(404).build();
     }
 

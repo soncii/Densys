@@ -69,7 +69,10 @@ public class RestControl {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> patientById(@PathVariable Long id) {
         Optional<Patient> byId = patientRepository.findById(id);
-        if (byId.isPresent()) return ResponseEntity.ok(byId);
+        if (byId.isPresent()) {
+            logger.info(String.valueOf(byId.get()));
+            return ResponseEntity.ok(byId.get());
+        }
         return ResponseEntity.status(404).build();
     }
     @PutMapping(path="/update/patient/{id}",
