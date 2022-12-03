@@ -13,8 +13,8 @@ public class LoginDetails {
         return login;
     }
 
-    public void setLogin(String iinOremail) {
-        this.login = iinOremail;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {

@@ -4,6 +4,8 @@ import com.me.DenSys.app.DTO.LoginDetails;
 import com.me.DenSys.app.entities.Patient;
 import com.me.DenSys.app.repositories.DoctorRepository;
 import com.me.DenSys.app.repositories.PatientRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,17 +32,22 @@ public class RestControl {
         this.patientRepository = patientRepository;
         this.doctorRepository = doctorRepository;
     }
+    Logger logger = LoggerFactory.getLogger(RestControlDoctor.class);
 
     @GetMapping(path="/get/login",
     consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> loginD(@RequestBody LoginDetails details){
-        if (patientRepository.nativeFind(details.getLogin(),details.getPassword()).isPresent()){
-            return ResponseEntity.ok(patientRepository.nativeFind(details.getLogin(),details.getPassword()).get());
-        } else if (doctorRepository.findNative(details.getLogin(),details.getPassword()).isPresent()) {
-            return ResponseEntity.ok(doctorRepository.findNative(details.getLogin(),details.getPassword()).get());
-        } else
-            return ResponseEntity.status(404).body(details);
+        try {
+            if (patientRepository.nativeFind(details.getLogin(), details.getPassword()).isPresent()) {
+                return ResponseEntity.ok(patientRepository.nativeFind(details.getLogin(), details.getPassword()).get());
+            } else if (doctorRepository.findNative(details.getLogin(), details.getPassword()).isPresent()) {
+                return ResponseEntity.ok(doctorRepository.findNative(details.getLogin(), details.getPassword()).get());
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        return ResponseEntity.status(404).body(details);
     }
 
 

@@ -6,6 +6,8 @@ import com.me.DenSys.app.entities.Specialization;
 import com.me.DenSys.app.repositories.DoctorRepository;
 import com.me.DenSys.app.repositories.PatientRepository;
 import com.me.DenSys.app.repositories.SpecializationRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,6 +31,7 @@ public class RestControlDoctor {
     final
     SpecializationRepository specializationRepository;
     final PatientRepository patientRepository;
+    Logger logger = LoggerFactory.getLogger(RestControlDoctor.class);
 
 
     public RestControlDoctor(DoctorRepository doctorRepository, SpecializationRepository specializationRepository, PatientRepository patientRepository) {
