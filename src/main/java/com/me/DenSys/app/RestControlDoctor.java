@@ -53,7 +53,13 @@ public class RestControlDoctor {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @Transactional
     public ResponseEntity<Object> addPatient(@RequestBody Patient newPatient) {
-        patientRepository.save(newPatient);
+        logger.info(String.valueOf(newPatient));
+        try {
+            patientRepository.save(newPatient);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
         return ResponseEntity.ok(HttpStatus.OK);
     }
     @GetMapping(path = "/see/doctors/all",

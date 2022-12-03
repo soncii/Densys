@@ -59,6 +59,26 @@ public class Patient {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "id=" + id +
+                ", iIN='" + iIN + '\'' +
+                ", DoB=" + DoB +
+                ", firstName='" + firstName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", emergencyContactNumber='" + emergencyContactNumber + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", address='" + address + '\'' +
+                ", married='" + married + '\'' +
+                ", registrationDate=" + registrationDate +
+                '}';
+    }
+
     public String getAddress() {
         return address;
     }
