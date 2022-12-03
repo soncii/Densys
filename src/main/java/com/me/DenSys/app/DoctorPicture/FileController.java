@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -60,11 +61,16 @@ public class FileController {
     @GetMapping("/files/{id}")
     @Transactional
     public ResponseEntity<byte[]> getFile(@PathVariable String id) {
+        HttpHeaders headers =new HttpHeaders();
+        headers.setContentType(MediaType.parseMediaType("image/jpg"));
+
         logger.info(String.valueOf(id.getClass()));
         logger.info(id);
         try {
             FileDB fileDB = storageService.getFile(id);
             if (fileDB==null) logger.error("QUERY RESULTED IN ERROR");
+            headers.add("Content-Disposition", "inline; filename=" + fileDB.getName());
+            logger.info(fileDB.getName());
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")
                     .body(fileDB.getData());
