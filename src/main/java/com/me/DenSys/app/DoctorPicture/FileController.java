@@ -29,9 +29,9 @@ public class FileController {
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
         try {
-            storageService.store(file);
+            FileDB stored = storageService.store(file);
 
-            message = "Uploaded the file successfully: " + file.getOriginalFilename();
+            message = "https://calm-thicket-13954.herokuapp.com/file/" + stored.getId();
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
         } catch (Exception e) {
             message = "Could not upload the file: " + file.getOriginalFilename() + "!";
