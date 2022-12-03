@@ -8,6 +8,9 @@ public class LoginDetails {
         this.login = login;
         this.password = password;
     }
+    public LoginDetails() {
+
+    }
 
     public String getLogin() {
         return login;
