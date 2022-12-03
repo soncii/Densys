@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,6 +58,7 @@ public class FileController {
     }
 
     @GetMapping("/files/{id}")
+    @Transactional
     public ResponseEntity<byte[]> getFile(@PathVariable String id) {
         logger.info(String.valueOf(id.getClass()));
         logger.info(id);
