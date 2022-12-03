@@ -1,10 +1,7 @@
 package com.me.DenSys.app.entities;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.sql.Date;
-@Data
 @Entity(name="patient")
 @Table(name="patient")
 public class Patient {
@@ -130,14 +127,6 @@ public class Patient {
     public void setSurname(String surname) {
 
         this.surname = surname;
-    }
-
-    public String getmiddleName() {
-        return middleName;
-    }
-
-    public void setmiddleName(String middleName) {
-        this.middleName = middleName;
     }
 
     public String getBloodGroup() {
