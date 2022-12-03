@@ -31,7 +31,7 @@ public class FileController {
         try {
             FileDB stored = storageService.store(file);
 
-            message = "https://calm-thicket-13954.herokuapp.com/file/" + stored.getId();
+            message = "https://calm-thicket-13954.herokuapp.com/files/" + stored.getId();
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
         } catch (Exception e) {
             message = "Could not upload the file: " + file.getOriginalFilename() + "!";
