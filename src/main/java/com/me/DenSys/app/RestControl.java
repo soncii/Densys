@@ -34,7 +34,6 @@ public class RestControl {
     Logger logger = LoggerFactory.getLogger(RestControlDoctor.class);
 
     @GetMapping(path="/get/login",
-    consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> loginD(@RequestParam("login") String login, @RequestParam("password") String password){
         try {
