@@ -56,7 +56,6 @@ public class AppointmentController {
 //        return ResponseEntity.ok(collect);
  //   }
     @GetMapping(path="/appointment",
-
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object[]> requestAllPatients() {
 
