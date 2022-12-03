@@ -3,7 +3,6 @@ package com.me.DenSys.app.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "files")
 public class FileDB {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
