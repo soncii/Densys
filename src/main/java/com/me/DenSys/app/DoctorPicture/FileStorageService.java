@@ -3,6 +3,7 @@ package com.me.DenSys.app.DoctorPicture;
 import java.io.IOException;
 import java.util.stream.Stream;
 
+import com.me.DenSys.app.entities.FileDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

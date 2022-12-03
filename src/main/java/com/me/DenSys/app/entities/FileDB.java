@@ -1,8 +1,6 @@
-package com.me.DenSys.app.DoctorPicture;
+package com.me.DenSys.app.entities;
 
 import javax.persistence.*;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "files")
