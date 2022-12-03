@@ -51,6 +51,29 @@ public class Doctor {
 
     }
 
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "id=" + id +
+                ", iIN='" + iIN + '\'' +
+                ", password='" + password + '\'' +
+                ", DoB=" + DoB +
+                ", firstName='" + firstName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", departmentId='" + departmentId + '\'' +
+                ", specializationId='" + specializationId + '\'' +
+                ", experience=" + experience +
+                ", price=" + price +
+                ", scheduleDetails='" + scheduleDetails + '\'' +
+                ", degree='" + degree + '\'' +
+                ", rating=" + rating +
+                ", address='" + address + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
+
     public String getPassword() {
         return password;
     }
