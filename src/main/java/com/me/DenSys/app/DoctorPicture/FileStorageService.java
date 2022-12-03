@@ -24,7 +24,7 @@ public class FileStorageService {
     }
 
     public FileDB getFile(String id) {
-        return fileDBRepository.native_findById(Integer.parseInt(id)).get();
+        return fileDBRepository.native_findById(Integer.parseInt(id));
     }
 
     public Stream<FileDB> getAllFiles() {
