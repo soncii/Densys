@@ -1,5 +1,7 @@
 package com.me.DenSys.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -15,6 +17,7 @@ public class Doctor {
     @Column
     private String password;
     @Column(name="DateOfBirth")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date DoB;
     @Column(name="FirstName")
     private String firstName;

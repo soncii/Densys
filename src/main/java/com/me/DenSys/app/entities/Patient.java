@@ -1,5 +1,7 @@
 package com.me.DenSys.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 @Entity(name="patient")
@@ -11,6 +13,7 @@ public class Patient {
     @Column(name = "IIN")
     private String iIN;
     @Column(name = "DateOfBirth")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date DoB;
     @Column(name = "FirstName")
     private String firstName;
@@ -33,6 +36,7 @@ public class Patient {
     @Column(name = "Married")
     private String married;
     @Column(name = "RegistrationDate")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date registrationDate;
 
     public Patient() {
